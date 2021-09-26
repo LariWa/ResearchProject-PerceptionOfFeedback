@@ -17,10 +17,8 @@ export default {
     return {
       question1: {
         text: "Question 1",
-        responses: [
-          { text: "Wrong, too bad." },
-          { text: "Right!", correct: true },
-        ],
+        responses: [{ text: "Wrong" }, { text: "Right!", correct: true }],
+        feedback: "visualaudio", //visual, audio, visualaudio or none
       },
     };
   },
