@@ -1,6 +1,8 @@
 <template>
-  <div v-for="contentItem in pageContent" :key="contentItem">
-    <Content v-bind:contentData="contentItem" />
+  <div class="container">
+    <div v-for="contentItem in pageContent" :key="contentItem">
+      <Content v-bind:contentData="contentItem" />
+    </div>
   </div>
 </template>
 
