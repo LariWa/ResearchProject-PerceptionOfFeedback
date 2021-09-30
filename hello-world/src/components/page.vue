@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="contentItem in pageContent" :key="contentItem">
-      <Content v-bind:contentData="contentItem" />
+      <Content v-bind:contentData="contentItem" v-bind:pageIndex="pageIndex" />
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
   },
   props: {
     pageContent: Array,
+    pageIndex: Number,
   },
 
   data: function() {

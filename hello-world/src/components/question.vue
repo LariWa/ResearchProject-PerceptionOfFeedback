@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="question-style">
+      <img class="question-triangle" src="../assets/triangle.png" :class="(pageIndex == 0)? 'position-0' : (pageIndex == 1) ? 'position-1' : (pageIndex == 2) ? 'position-2' : (pageIndex == 3) ? 'position-3' : '' " />
       <h2>{{ question.text }}</h2>
     </div>
     <ul class="d-flex flex-column align-items-center" id="questionsList">
@@ -41,6 +42,7 @@ export default {
 
   props: {
     question: Object,
+    pageIndex: Number,
   },
   data: function() {
     return {
@@ -79,9 +81,11 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../scss/app.scss';
+
 .question-style {
-  background-color: #F3F6FF;
+  background-color: $color_lightPink;
   height: 300px;
   display: flex;
   align-items: center;
@@ -89,36 +93,55 @@ export default {
   padding: 40px;
   text-align: center;
   font-size: 36px;
-  color: #0D0844;
+  color: $color_darkBlue;
   filter: drop-shadow(0px 8px 15px rgb(0 0 0 / 0.05));
   border-radius: 50px;
-}
+
+  .question-triangle {
+    position: absolute;
+    width: 100px;
+    top: -60px;
+
+    &.position-0 {
+      left: 70px;
+    }
+
+    &.position-1 {
+      left: 360px;
+    }
+
+    &.position-2 {
+      left: 650px;
+    }
+
+    &.position-3 {
+      left: 930px;
+    }
+  }
+} 
 
 ul {
   list-style-type: none;
 }
 input {
-/*   content: url('http://i.stack.imgur.com/M3EkO.png'); */
   height: 80px;
   width: 80px;
   background-color: white;
   border-radius: 100px;
-  border: 5px solid #B0B3FF;
+  border: 5px solid $color_lilac;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0 0 0 80px;
 }
-input:checked {
-/*   content: url('http://i.stack.imgur.com/Ialva.png'); */
-}
+
 .answer-style {
   padding: 1rem;
   margin-top: 80px;
   width: 960px;
-  background-color: #F3F6FF;
+  background-color: $color_lightPink;
   border-radius: 100px;
-  color: #0D0844;
+  color: $color_darkBlue;
   font-size: 24px;
   height: 165px;
 }
@@ -129,24 +152,35 @@ input:checked {
 
 .correct-answer {
   background-color: white;
-  border: 10px solid #B6FFB0;
-  color: #1F8816;
-  filter: drop-shadow(0px 8px 15px #B6FFB0);
-}
+  border: 10px solid $color_green;
+  color: $color_darkGreen;
+  filter: drop-shadow(0px 8px 15px $color_green);
 
-.correct-answer input {
-  border: 5px solid #B6FFB0;
+  input {
+    border: 5px solid $color_green;
+
+    &:checked {
+      content: url('../assets/tick.png'); 
+      padding: 8px;
+    }
+  }
+
 }
 
 .wrong-answer {
   background-color: white;
-  border: 10px solid red;
-  color: red;
-  filter: drop-shadow(0px 8px 15px red);
-}
+  border: 10px solid $color_red;
+  color: #0D0844;
+  filter: drop-shadow(0px 8px 15px $color_red);
 
-.wrong-answer input {
-  border: 3px solid red;
+  input {
+    border: 3px solid $color_red;
+
+    &:checked {
+      content: url('../assets/x.png'); 
+      padding: 8px;
+    }
+  }
 }
 </style>
 

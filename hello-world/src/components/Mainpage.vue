@@ -21,12 +21,14 @@
               4
             </div>
         </div>
-        <Page v-bind:pageContent="contentItem" />
+        <Page v-bind:pageContent="contentItem" v-bind:pageIndex="currentPage" />
       </div>
     </div>
 
     <div class="container d-flex justify-content-between">
-      <button class="previous-button" v-on:click="previous" v-show="isPrevious()">Previous</button>
+      <button class="previous-button" v-on:click="previous" v-show="isPrevious()">
+        Previous
+      </button>
 
       <button class="next-button" v-on:click="next" v-show="isNext()">
         Next
@@ -125,7 +127,9 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../scss/app.scss';
+
 .previous-button, .next-button {
   width: 289px;
   height: 89px;
@@ -134,17 +138,62 @@ export default {
   border-radius: 100px;
   font-size: 36px;
   margin: 100px 0px;
-  background: #F3F6FF;
-  color: #525497;
+  background: $color_lightPink;
+  color: $color_darkPurple;
+
+  &:hover {
+    background: $color_lilac;
+    color: white;
+  }
+
+  &:active {
+    outline: none !important;
+  }
 }
 
-.next-button:hover, .previous-button:hover {
-  background: #B0B3FF;
-  color: white;
+.previous-button::before, 
+.previous-button:hover::before {
+  content: ''; 
+  display: inline-block;
+  background: url('../assets/darkArrow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+  margin-right: 1rem;
 }
 
-.next-button:active, .previous-button:active, .next-button:focus, .previous-button:focus {
-  outline: none !important;
+.next-button::after, 
+.next-button:hover::after {
+  content: ''; 
+  display: inline-block;
+  background: url('../assets/darkArrow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  margin-left: 1rem;
+  position: relative;
+  top: 8px;
+}
+
+.previous-button:hover::before, 
+.next-button:hover::after {
+  background: url('../assets/whiteArrow.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+.previous-button,
+.next-button  {
+  .arrow { 
+   width: 30px;
+  }
+}
+
+.previous-button .arrow {
+  transform: rotate(180deg);
 }
 
 .circle-menu {
@@ -154,38 +203,43 @@ export default {
   margin-bottom: 80px;
 }
 
-.circle-menu .circle-1, .circle-menu .circle-2, .circle-menu .circle-3, .circle-menu .circle-4 {
-  width: 64px;
-  height: 64px;
-  background: #FFFFFF;
-  border: 5px solid #B0B3FF;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color:#0D0844;
+.circle-menu {
+   .circle-1, .circle-2, .circle-3, .circle-4 { 
+    width: 64px;
+    height: 64px;
+    background: white;
+    border: 5px solid $color_darkPurple;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color:$color_darkPurple;
+    font-weight: 600;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.05);
+   }
+
+   .line {
+    width: 222px;
+    border-bottom: 8px solid $color_darkPurple;
+    position: relative;
+    bottom: 28px;
+
+    &.inactive-line {
+      border-bottom: 8px solid $color_lightPurple;
+    }
+   }
+
+  .active-circle {
+    background-color: $color_darkPurple;
+    color: white;
+  }
+
+  .inactive-circle {
+    background-color: white;
+    border: 5px solid $color_lightPurple;
+  }
 }
 
-.circle-menu .line {
-  width: 222px;
-  border-bottom: 8px solid #B0B3FF;
-  position: relative;
-  bottom: 28px;
-}
-
-.circle-menu .line.inactive-line {
-  border-bottom: 8px solid #C8D3F4;
-}
-
-.circle-menu .active-circle {
-  background-color: #B0B3FF;
-  color: white;
-}
-
-.circle-menu .inactive-circle {
-  background-color: #F3F6FF;
-  border: 5px solid #C8D3F4;
-}
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
