@@ -68,19 +68,19 @@ export default {
           {
             text: "first text",
             question: {
-              text: "Question 1",
-              responses: [{ text: "Wrong" }, { text: "Right!", correct: true }],
+              text: "What is true about health literacy?",
+              responses: [{ text: "It is about the ability to adopt good eating, hygiene, exercise, and sleeping behaviour." }, { text: "It is about the ability to handle basic medical care (e.g. measure body temperature, blood glucose level) on his/ her own."}, { text: "Health literacy is about the ability to obtain, process, understand, and use health information and services needed to maintain good health", correct: true }],
               feedback: "visualaudio", //visual, audio, visualaudio or none
             },
           },
-          {
+          /* {
             text: "second text",
             question: {
               text: "Question 2",
               responses: [{ text: "Wrong" }, { text: "Right!", correct: true }],
               feedback: "audio", //visual, audio, visualaudio or none
             },
-          },
+          }, */
         ],
 
         //second page
@@ -89,7 +89,7 @@ export default {
             text: "",
             question: {
               text: "Which of the following lists all of four dimensions of health literacy?",
-              responses: [{ text: "Access information, Understand information, appraise information, and apply information ", correct: true }, { text: "Assess health factors, interpret health information, make health decision and update oneself in a health environment"}, { text: "Maintain health behavior, improve the ability to act in the health systems, prevent health problems, and improve health knowledge"}],
+              responses: [{ text: "Access information, Understand information, appraise information, and apply information ", correct: true }, { text: "Assess health factors, interpret health information, make health decision and update oneself in a health environment"}, { text: "Maintain health behavior, improve the ability to act in the health systems, prevent health problems, and improve health knowledge"}, { text: "Health care, Disease prevention, Health promotion, and Health behavior."}],
               feedback: "visualaudio", //visual, audio, visualaudio or none
             },
           },
@@ -108,19 +108,19 @@ export default {
           {
             text: "third page first text",
             question: {
-              text: "Question 1",
-              responses: [{ text: "Wrong" }, { text: "Right!", correct: true }],
+              text: "What is true about the health literacy environment?",
+              responses: [{ text: "It is about policies, processes, materials, people and relationships of the health system." }, { text: "It is about the demands and complexities placed on people who seek care in health systems.", correct: true }, { text: "It involves the broader range of materials such as applications form, rights postings, medical history forms, directives, and information booklets."}],
               feedback: "visualaudio", //visual, audio, visualaudio or none
             },
           },
-          {
+      /*     {
             text: "second text",
             question: {
               text: "Question 2",
               responses: [{ text: "Wrong" }, { text: "Right!", correct: true }],
               feedback: "audio", //visual, audio, visualaudio or none
             },
-          },
+          }, */
         ],
       ],
     };
