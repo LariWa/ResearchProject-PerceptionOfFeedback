@@ -1,6 +1,6 @@
 <template>
-  <div>{{ contentData.text }}</div>
-  <question v-bind:question="contentData.question" />
+  <!-- <div>{{ contentData.text }}</div> -->
+  <question v-bind:question="contentData.question" v-bind:pageIndex="pageIndex"/>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
   },
   props: {
     contentData: Object,
+    pageIndex: Number,
   },
   data: function() {
     return {};
