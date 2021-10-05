@@ -1,19 +1,44 @@
 <template>
   <div>
     <div class="question-style mx-auto align-items-center">
-      <img class="question-triangle" src="../assets/triangle.png" :class="(pageIndex == 0)? 'position-0' : (pageIndex == 1) ? 'position-1' : (pageIndex == 2) ? 'position-2' : (pageIndex == 3) ? 'position-3' : '' " />
+      <img
+        class="question-triangle"
+        src="../assets/triangle.png"
+        :class="
+          pageIndex == 0
+            ? 'position-0'
+            : pageIndex == 1
+            ? 'position-1'
+            : pageIndex == 2
+            ? 'position-2'
+            : pageIndex == 3
+            ? 'position-3'
+            : ''
+        "
+      />
       <h2>{{ question.text }}</h2>
     </div>
     <ul class="d-flex flex-column align-items-center" id="questionsList">
-      <li class="answer-style d-flex align-items-center" v-for="(response, index) in question.responses" :key="response" :class="((selected_answer === index) && correctAnswer) ? 'correct-answer' : ((selected_answer === index) && !correctAnswer) ? 'wrong-answer' : ''">
+      <li
+        class="answer-style d-flex align-items-center"
+        v-for="(response, index) in question.responses"
+        :key="response"
+        :class="
+          selected_answer === index && correctAnswer
+            ? 'correct-answer'
+            : selected_answer === index && !correctAnswer
+            ? 'wrong-answer'
+            : ''
+        "
+      >
         <label class="d-flex align-items-center">
           <div class="d-flex">
-          <input
-            type="radio"
-            v-bind:name="'1'"
-            v-on:click="feedback(response.correct)"
-            @change="onChange(index)" 
-          />
+            <input
+              type="radio"
+              v-bind:name="'1'"
+              v-on:click="feedback(response.correct)"
+              @change="onChange(index)"
+            />
           </div>
           <div class="answer-text">
             {{ response.text }}
@@ -57,10 +82,8 @@ export default {
       selected_answer: -1,
     };
   },
-  
-  created: function () {
 
-  },
+  created: function() {},
 
   methods: {
     feedback(correct) {
@@ -70,19 +93,28 @@ export default {
       else this.correctAnswer = false;
       //audio feedback
       if (this.question.feedback.includes("audio")) {
-        if (correct) this.correctAudio.play();
-        else this.incorrectAudio.play();
+        this.resetAudio();
+        if (correct) {
+          this.correctAudio.play();
+        } else {
+          this.incorrectAudio.play();
+        }
       }
+    },
+    resetAudio() {
+      this.correctAudio.pause();
+      this.correctAudio.currentTime = 0;
+      this.incorrectAudio.pause();
+      this.incorrectAudio.currentTime = 0;
     },
     onChange(index) {
       this.selected_answer = index;
-        console.log(index);
-    }
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
-@import '../scss/app.scss';
+@import "../scss/app.scss";
 
 .question-style {
   background-color: $color_lightPink;
@@ -123,7 +155,7 @@ export default {
       left: 630px;
     }
   }
-} 
+}
 
 ul {
   list-style-type: none;
@@ -165,24 +197,23 @@ input {
     border: 5px solid $color_green;
 
     &:checked {
-      content: url('../assets/tick.png'); 
+      content: url("../assets/tick.png");
       padding: 8px;
     }
   }
-
 }
 
 .wrong-answer {
   background-color: white;
   border: 10px solid $color_red;
-  color: #0D0844;
+  color: #0d0844;
   filter: drop-shadow(0px 8px 15px $color_red);
 
   input {
     border: 3px solid $color_red;
 
     &:checked {
-      content: url('../assets/x.png'); 
+      content: url("../assets/x.png");
       padding: 8px;
     }
   }
