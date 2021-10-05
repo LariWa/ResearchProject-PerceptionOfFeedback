@@ -1,5 +1,5 @@
 <template>
-  <div>{{ contentData.text }}</div>
+  <!-- <div>{{ contentData.text }}</div> -->
   <question v-bind:question="contentData.question" v-bind:pageIndex="pageIndex"/>
 </template>
 

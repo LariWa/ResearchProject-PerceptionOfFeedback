@@ -8,10 +8,11 @@
                 <span class="mx-2">My Courses</span>
                 <span class="mx-2">Syllabus</span>
                 <span class="mx-2">Outline</span>
-                <span class="mx-2">Ritty Thomas</span>
+                <span class="mx-2"><img class="user-icon" src="../assets/user_icon.png" />Username</span>
             </div>
         </div>
     </div>
+         <vue-scroll-progress-bar @complete="handleComplete" height="2rem" />
     <div class="unit-elements text-center">
         <span class="mx-3">Unit 2: Digital Health Literacy</span>
         <span class="mx-3">></span>
@@ -26,9 +27,9 @@
             <h4>Definition and Conceptualization of health literacy</h4>
         </div>
 
-        <div class="box text-center">
-            <h2 class="mt-0">LEARNING OBJECTIVE</h2>
-            <p class="my-0">Describe health literacy and related issues</p>
+        <div class="box py-4">
+            <h3 class="mt-0 h3-learning">LEARNING OBJECTIVE</h3>
+            <h4 class="my-0">Describe health literacy and related issues</h4>
         </div>
 
         <p>Although the module concerns the introduction of digital health literacy, we are going to start by understanding the core element of digital health literacy, health literacy. Thus, in the first section, we will be looking at the definition of health literacy, antecedents of health literacy, its relationship to health outcomes, and related skills.</p>
@@ -92,6 +93,7 @@
 
 <script>
 import Mainpage from "./Mainpage.vue";
+
 export default {
   name: "ReadingPage",
   components: {
@@ -125,6 +127,11 @@ export default {
     .navbar-elements {
         position: relative;
         top: 26px;
+
+        .user-icon {
+            width: 20px;
+            margin-right: 5px;
+        }
     }
 }
 
@@ -193,6 +200,10 @@ ul {
     &.figure-2-text {
         border-radius: 50px 0 0 50px;
     }
+
+    .h3-learning {
+        color: rgba(13, 8, 68, 0.55);
+    }
 }
 
 .figure-text {
@@ -230,12 +241,12 @@ ul {
 }
 
 .quiz-button {
-    width: 289px;
+    width: 180px;
     height: 89px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.05);
     border: none;
     border-radius: 100px;
-    font-size: 36px;
+    font-size: 24px;
     margin: 100px 0px;
     background: $color_lightPink;
     color: $color_darkPurple;
@@ -257,10 +268,10 @@ ul {
   background: url('../assets/darkArrow.png');
   background-size: contain;
   background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin-left: 1rem;
   position: relative;
-  top: 8px;
+  top: 6px;
 }
 </style>

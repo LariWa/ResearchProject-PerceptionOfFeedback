@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="question-style">
+    <div class="question-style mx-auto align-items-center">
       <img class="question-triangle" src="../assets/triangle.png" :class="(pageIndex == 0)? 'position-0' : (pageIndex == 1) ? 'position-1' : (pageIndex == 2) ? 'position-2' : (pageIndex == 3) ? 'position-3' : '' " />
       <h2>{{ question.text }}</h2>
     </div>
@@ -86,16 +86,21 @@ export default {
 
 .question-style {
   background-color: $color_lightPink;
-  height: 300px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 60px;
   text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   color: $color_darkBlue;
   filter: drop-shadow(0px 8px 15px rgb(0 0 0 / 0.05));
   border-radius: 50px;
+  width: 800px;
+
+  h2 {
+    font-size: 24px;
+  }
 
   .question-triangle {
     position: absolute;
@@ -107,15 +112,15 @@ export default {
     }
 
     &.position-1 {
-      left: 360px;
+      left: 260px;
     }
 
     &.position-2 {
-      left: 650px;
+      left: 440px;
     }
 
     &.position-3 {
-      left: 930px;
+      left: 630px;
     }
   }
 } 
@@ -124,8 +129,8 @@ ul {
   list-style-type: none;
 }
 input {
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   background-color: white;
   border-radius: 100px;
   border: 5px solid $color_lilac;
@@ -137,13 +142,13 @@ input {
 
 .answer-style {
   padding: 1rem;
-  margin-top: 80px;
-  width: 960px;
+  margin-top: 50px;
+  width: 660px;
   background-color: $color_lightPink;
   border-radius: 100px;
   color: $color_darkBlue;
-  font-size: 24px;
-  height: 165px;
+  font-size: 16px;
+  height: 125px;
 }
 
 .answer-text {

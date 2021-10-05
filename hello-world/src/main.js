@@ -6,3 +6,4 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './scss/app.scss'
 
 createApp(App).mount('#app')
+
