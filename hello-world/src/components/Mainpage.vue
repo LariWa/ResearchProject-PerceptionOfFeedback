@@ -123,6 +123,17 @@ export default {
             },
           }, */
         ],
+
+        [
+          {
+            text: "",
+            question: {
+              text: "Which one of the sub dimensions is under the health promotion domain?",
+              responses: [{ text: "The ability to regularly update oneself on determinants of health in the social and physical environment.", correct: true }, { text: "The ability to make informed decisions on medical issues and comply with medical advice." }, { text: "The ability to interpret and evaluate information on risk factors, and to make informed decisions on risk factors for health."}],
+              feedback: "visualaudio", //visual, audio, visualaudio or none
+            },
+          }
+        ]
       ],
     };
   },
