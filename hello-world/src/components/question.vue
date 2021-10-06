@@ -7,6 +7,7 @@
     <ul class="d-flex flex-column align-items-center" id="questionsList">
       <li class="answer-style d-flex align-items-center" v-for="(response, index) in question.responses" :key="response" :class="((selected_answer === index) && correctAnswer) ? 'correct-answer' : ((selected_answer === index) && !correctAnswer) ? 'wrong-answer' : ''">
         <label class="d-flex align-items-center">
+          <img v-if="((selected_answer === index) && correctAnswer)" class="confetti-left" src="../assets/confetti.gif" />
           <div class="d-flex">
           <input
             type="radio"
@@ -18,6 +19,7 @@
           <div class="answer-text">
             {{ response.text }}
           </div>
+          <img v-if="((selected_answer === index) && correctAnswer)" class="confetti-right" src="../assets/confetti.gif" />
         </label>
       </li>
     </ul>
@@ -149,6 +151,18 @@ input {
   color: $color_darkBlue;
   font-size: 16px;
   height: 125px;
+
+  .confetti-left {
+    position: absolute;
+    left: -200px;
+    height: 220px;
+  }
+
+  .confetti-right {
+    position: absolute;
+    right: -200px;
+    height: 220px;
+  }
 }
 
 .answer-text {
