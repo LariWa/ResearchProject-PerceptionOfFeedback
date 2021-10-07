@@ -99,9 +99,19 @@ export default {
       else this.correctAnswer = false;
       //audio feedback
       if (this.question.feedback.includes("audio")) {
-        if (correct) this.correctAudio.play();
-        else this.incorrectAudio.play();
+        this.resetAudio();
+        if (correct) {
+          this.correctAudio.play();
+        } else {
+          this.incorrectAudio.play();
+        }
       }
+    },
+    resetAudio() {
+      this.correctAudio.pause();
+      this.correctAudio.currentTime = 0;
+      this.incorrectAudio.pause();
+      this.incorrectAudio.currentTime = 0;
     },
     onChange(index) {
       this.selected_answer = index;
