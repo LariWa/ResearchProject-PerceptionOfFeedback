@@ -1,15 +1,42 @@
 <template>
   <!--  <Mainpage /> -->
-  <ReadingPage />
+  <div>
+    <ReadingPage1 @nextPage="nextPage" v-show="currentPage == 0" />
+    <ReadingPage2 @nextPage="nextPage" v-show="currentPage == 2" />
+    <ReadingPage3 @nextPage="nextPage" v-show="currentPage == 4" />
+    <FinalPage v-show="currentPage == 6" />
+    <SurveyPage
+      @nextPage="nextPage"
+      v-show="currentPage == 1 || currentPage == 3 || currentPage == 5"
+    />
+  </div>
 </template>
 
 <script>
-import ReadingPage from "./components/ReadingPage1.vue";
+import ReadingPage1 from "./components/ReadingPage1.vue";
+import ReadingPage2 from "./components/ReadingPage2.vue";
+import ReadingPage3 from "./components/ReadingPage3.vue";
+import FinalPage from "./components/FinalPage.vue";
+import SurveyPage from "./components/SurveyPage.vue";
 
 export default {
   name: "App",
   components: {
-    ReadingPage,
+    ReadingPage1,
+    ReadingPage2,
+    ReadingPage3,
+    FinalPage,
+    SurveyPage,
+  },
+  data: function() {
+    return {
+      currentPage: 0,
+    };
+  },
+  methods: {
+    nextPage() {
+      this.currentPage++;
+    },
   },
 };
 </script>

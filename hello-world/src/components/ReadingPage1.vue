@@ -28,7 +28,8 @@
       </div>
       <Progressbar v-if="!quiz"></Progressbar>
     </div>
-    <Quizpage v-if="quiz" v-bind:questions="questions" />
+    <Quizpage v-if="quiz" v-bind:questions="questions" @finishPage="nextPage" />
+
     <div class="container mt-5" v-else>
       <div class="d-flex justify-content-between">
         <h3>MODULE 3</h3>
@@ -201,7 +202,7 @@ import Progressbar from "./progress.vue";
 import Quizpage from "./Quizpage.vue";
 
 export default {
-  name: "ReadingPage",
+  name: "ReadingPage1",
   components: {
     Progressbar,
     Quizpage,
@@ -303,6 +304,11 @@ export default {
   methods: {
     activateQuiz: function() {
       this.quiz = true;
+    },
+
+    nextPage: function() {
+      console.log("nextPage");
+      this.$emit("nextPage");
     },
   },
 };

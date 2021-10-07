@@ -76,6 +76,13 @@
       <button class="next-button" v-on:click="next" v-show="isNext()">
         Next
       </button>
+      <button
+        class="next-button finish-button"
+        v-on:click="finish"
+        v-show="isFinalPage()"
+      >
+        Finish Section
+      </button>
     </div>
     <div style="height: 100px"></div>
   </div>
@@ -102,8 +109,15 @@ export default {
     isNext() {
       return this.currentPage < this.questions.length - 1;
     },
+    isFinalPage() {
+      return !(this.currentPage < this.questions.length - 1);
+    },
     isPrevious() {
       return this.currentPage > 0;
+    },
+    finish() {
+      console.log("send");
+      this.$emit("finishPage");
     },
   },
 
@@ -152,7 +166,10 @@ export default {
 .next-button {
   right: 0;
 }
-
+.finish-button {
+  width: 300px;
+  font-size: 1.75em;
+}
 .previous-button::before,
 .previous-button:hover::before {
   content: "";
