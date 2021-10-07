@@ -28,8 +28,12 @@
       </div>
       <Progressbar v-if="!quiz"></Progressbar>
     </div>
-    <Quizpage v-if="quiz" v-bind:questions="questions" @finishPage="nextPage" />
-
+    <Quizpage
+      v-if="quiz"
+      v-bind:questions="questions"
+      @finishPage="nextPage"
+      v-bind:feedback="feedback"
+    />
     <div class="container mt-5" v-else>
       <div class="d-flex justify-content-between">
         <h3>MODULE 3</h3>
@@ -207,7 +211,7 @@ export default {
     Progressbar,
     Quizpage,
   },
-  props: {},
+  props: { feedback: String },
 
   data: function() {
     return {
@@ -230,7 +234,6 @@ export default {
               correct: true,
             },
           ],
-          feedback: "visualaudio", //visual, audio, visualaudio or none
         },
 
         {
@@ -255,7 +258,6 @@ export default {
                 "Health care, Disease prevention, Health promotion, and Health behavior.",
             },
           ],
-          feedback: "visualaudio", //visual, audio, visualaudio or none
         },
 
         {
@@ -275,7 +277,6 @@ export default {
                 "It involves the broader range of materials such as applications form, rights postings, medical history forms, directives, and information booklets.",
             },
           ],
-          feedback: "visualaudio", //visual, audio, visualaudio or none
         },
         {
           text:
@@ -295,7 +296,6 @@ export default {
                 "The ability to interpret and evaluate information on risk factors, and to make informed decisions on risk factors for health.",
             },
           ],
-          feedback: "visualaudio", //visual, audio, visualaudio or none
         },
       ],
     };

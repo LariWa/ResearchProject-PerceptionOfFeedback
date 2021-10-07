@@ -28,7 +28,12 @@
       </div>
       <Progressbar v-if="!quiz"></Progressbar>
     </div>
-    <Quizpage v-if="quiz" v-bind:questions="questions" @finishPage="nextPage" />
+    <Quizpage
+      v-if="quiz"
+      v-bind:questions="questions"
+      @finishPage="nextPage"
+      v-bind:feedback="feedback"
+    />
     <div class="container mt-5" v-else>
       <div class="d-flex justify-content-between">
         <h3>MODULE 3</h3>
@@ -256,7 +261,7 @@ export default {
     Progressbar,
     Quizpage,
   },
-  props: {},
+  props: { feedback: String },
 
   data: function() {
     return {
@@ -270,7 +275,6 @@ export default {
             { text: "The ability to read English", correct: true },
             { text: "The ability to understand relevant health terms." },
           ],
-          feedback: "visual", //visual, audio, visualaudio or none
         },
         {
           text:
@@ -286,7 +290,6 @@ export default {
             },
             { text: "Time to navigate into digital health systems." },
           ],
-          feedback: "visual", //visual, audio, visualaudio or none
         },
 
         {
@@ -306,7 +309,6 @@ export default {
                 "A limited number of health workers who understand the functionalities of e-health systems can increase health disparities in low-income countries.",
             },
           ],
-          feedback: "visual", //visual, audio, visualaudio or none
         },
 
         {
@@ -320,7 +322,6 @@ export default {
             },
             { text: "Access to organized and accurate information." },
           ],
-          feedback: "visual", //visual, audio, visualaudio or none
         },
       ],
     };

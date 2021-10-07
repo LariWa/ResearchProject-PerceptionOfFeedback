@@ -1,9 +1,21 @@
 <template>
   <!--  <Mainpage /> -->
   <div>
-    <ReadingPage1 @nextPage="nextPage" v-show="currentPage == 0" />
-    <ReadingPage2 @nextPage="nextPage" v-show="currentPage == 2" />
-    <ReadingPage3 @nextPage="nextPage" v-show="currentPage == 4" />
+    <ReadingPage1
+      @nextPage="nextPage"
+      v-show="currentPage == 0"
+      v-bind:feedback="this.Feedbacktypes[indexes[0]]"
+    />
+    <ReadingPage2
+      @nextPage="nextPage"
+      v-show="currentPage == 2"
+      v-bind:feedback="this.Feedbacktypes[indexes[1]]"
+    />
+    <ReadingPage3
+      @nextPage="nextPage"
+      v-show="currentPage == 4"
+      v-bind:feedback="this.Feedbacktypes[indexes[2]]"
+    />
     <FinalPage v-show="currentPage == 6" />
     <SurveyPage
       @nextPage="nextPage"
@@ -31,6 +43,8 @@ export default {
   data: function() {
     return {
       currentPage: 0,
+      Feedbacktypes: ["visual", "audio", "visualaudio"],
+      indexes: [0, 1, 2].sort(() => Math.random() - 0.5),
     };
   },
   methods: {

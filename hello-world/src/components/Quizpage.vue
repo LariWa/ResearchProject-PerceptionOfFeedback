@@ -60,7 +60,11 @@
             4
           </div>
         </div>
-        <Question v-bind:question="question" v-bind:pageIndex="currentPage" />
+        <Question
+          v-bind:question="question"
+          v-bind:feedback="feedback"
+          v-bind:pageIndex="currentPage"
+        />
       </div>
     </div>
 
@@ -95,6 +99,7 @@ export default {
   name: "Quizpage",
   props: {
     questions: Array,
+    feedback: String,
   },
   components: {
     Question,

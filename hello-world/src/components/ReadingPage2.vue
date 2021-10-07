@@ -28,7 +28,12 @@
       </div>
       <Progressbar v-if="!quiz"></Progressbar>
     </div>
-    <Quizpage v-if="quiz" v-bind:questions="questions" @finishPage="nextPage" />
+    <Quizpage
+      v-if="quiz"
+      v-bind:questions="questions"
+      @finishPage="nextPage"
+      v-bind:feedback="feedback"
+    />
     <div class="container mt-5" v-else>
       <div class="d-flex justify-content-between">
         <h3>MODULE 3</h3>
@@ -249,7 +254,7 @@ export default {
     Quizpage,
     Progressbar,
   },
-  props: {},
+  props: { feedback: String },
 
   data: function() {
     return {
@@ -265,7 +270,6 @@ export default {
             },
             { text: "She may tend to use more medicine.", correct: true },
           ],
-          feedback: "audio", //visual, audio, visualaudio or none
         },
         {
           text:
@@ -285,7 +289,6 @@ export default {
               correct: true,
             },
           ],
-          feedback: "audio", //visual, audio, visualaudio or none
         },
         {
           text: "Which of the following statements is correct?",
@@ -304,7 +307,6 @@ export default {
               correct: true,
             },
           ],
-          feedback: "audio", //visual, audio, visualaudio or none
         },
         {
           text: "Which of the following statements is correct?",
@@ -323,7 +325,6 @@ export default {
               correct: true,
             },
           ],
-          feedback: "audio", //visual, audio, visualaudio or none
         },
       ],
     };

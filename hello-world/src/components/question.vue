@@ -24,7 +24,15 @@
         v-for="(response, index) in question.responses"
         :key="response"
         :class="
-          selected_answer === index && correctAnswer
+          this.feedback === 'audio' &&
+          selected_answer === index &&
+          correctAnswer
+            ? 'correct-audio'
+            : this.feedback === 'audio' &&
+              selected_answer === index &&
+              !correctAnswer
+            ? 'wrong-audio'
+            : selected_answer === index && correctAnswer
             ? 'correct-answer'
             : selected_answer === index && !correctAnswer
             ? 'wrong-answer'
@@ -41,7 +49,7 @@
             <input
               type="radio"
               v-bind:name="'1'"
-              v-on:click="feedback(response.correct)"
+              v-on:click="giveFeedback(response.correct)"
               @change="onChange(index)"
             />
           </div>
@@ -57,11 +65,9 @@
       </li>
     </ul>
     <!-- visual feedback -->
-    <div v-show="correctAnswer && question.feedback.includes('visual')"></div>
+    <div v-show="correctAnswer && feedback.includes('visual')"></div>
     <div
-      v-show="
-        selected && !correctAnswer && question.feedback.includes('visual')
-      "
+      v-show="selected && !correctAnswer && feedback.includes('visual')"
     ></div>
     <!-- audio feedback -->
   </div>
@@ -74,6 +80,7 @@ export default {
   props: {
     question: Object,
     pageIndex: Number,
+    feedback: String,
   },
   data: function() {
     return {
@@ -92,13 +99,13 @@ export default {
   created: function() {},
 
   methods: {
-    feedback(correct) {
+    giveFeedback(correct) {
       this.selected = true;
 
       if (correct) this.correctAnswer = true;
       else this.correctAnswer = false;
       //audio feedback
-      if (this.question.feedback.includes("audio")) {
+      if (this.feedback.includes("audio")) {
         this.resetAudio();
         if (correct) {
           this.correctAudio.play();
@@ -221,6 +228,14 @@ input {
     }
   }
 }
+.correct-audio {
+  input {
+    &:checked {
+      content: url("../assets/tickB.png");
+      padding: 8px;
+    }
+  }
+}
 
 .wrong-answer {
   background-color: white;
@@ -233,6 +248,14 @@ input {
 
     &:checked {
       content: url("../assets/x.png");
+      padding: 8px;
+    }
+  }
+}
+.wrong-audio {
+  input {
+    &:checked {
+      content: url("../assets/xB.png");
       padding: 8px;
     }
   }
