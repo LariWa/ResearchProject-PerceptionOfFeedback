@@ -1,10 +1,10 @@
 <template>
   <!--  <Mainpage /> -->
-  <reading-page />
+  <ReadingPage />
 </template>
 
 <script>
-import ReadingPage from "./components/ReadingPage.vue";
+import ReadingPage from "./components/ReadingPage1.vue";
 
 export default {
   name: "App",

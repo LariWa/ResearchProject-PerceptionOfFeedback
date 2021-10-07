@@ -1,39 +1,68 @@
 <template>
   <div>
     <div class="question-style mx-auto align-items-center">
-      <img class="question-triangle" src="../assets/triangle.png" :class="(pageIndex == 0)? 'position-0' : (pageIndex == 1) ? 'position-1' : (pageIndex == 2) ? 'position-2' : (pageIndex == 3) ? 'position-3' : '' " />
+      <img
+        class="question-triangle"
+        src="../assets/triangle.png"
+        :class="
+          pageIndex == 0
+            ? 'position-0'
+            : pageIndex == 1
+            ? 'position-1'
+            : pageIndex == 2
+            ? 'position-2'
+            : pageIndex == 3
+            ? 'position-3'
+            : ''
+        "
+      />
       <h2>{{ question.text }}</h2>
     </div>
     <ul class="d-flex flex-column align-items-center" id="questionsList">
-      <li class="answer-style d-flex align-items-center" v-for="(response, index) in question.responses" :key="response" :class="((selected_answer === index) && correctAnswer) ? 'correct-answer' : ((selected_answer === index) && !correctAnswer) ? 'wrong-answer' : ''">
+      <li
+        class="answer-style d-flex align-items-center"
+        v-for="(response, index) in question.responses"
+        :key="response"
+        :class="
+          selected_answer === index && correctAnswer
+            ? 'correct-answer'
+            : selected_answer === index && !correctAnswer
+            ? 'wrong-answer'
+            : ''
+        "
+      >
         <label class="d-flex align-items-center">
-          <img v-if="((selected_answer === index) && correctAnswer)" class="confetti-left" src="../assets/confetti.gif" />
-          <div class="d-flex">
-          <input
-            type="radio"
-            v-bind:name="'1'"
-            v-on:click="feedback(response.correct)"
-            @change="onChange(index)" 
+          <img
+            v-if="selected_answer === index && correctAnswer"
+            class="confetti-left"
+            src="../assets/confetti.gif"
           />
+          <div class="d-flex">
+            <input
+              type="radio"
+              v-bind:name="'1'"
+              v-on:click="feedback(response.correct)"
+              @change="onChange(index)"
+            />
           </div>
           <div class="answer-text">
             {{ response.text }}
           </div>
-          <img v-if="((selected_answer === index) && correctAnswer)" class="confetti-right" src="../assets/confetti.gif" />
+          <img
+            v-if="selected_answer === index && correctAnswer"
+            class="confetti-right"
+            src="../assets/confetti.gif"
+          />
         </label>
       </li>
     </ul>
     <!-- visual feedback -->
-    <div v-show="correctAnswer && question.feedback.includes('visual')">
-      yeay correct answer
-    </div>
+    <div v-show="correctAnswer && question.feedback.includes('visual')"></div>
     <div
       v-show="
         selected && !correctAnswer && question.feedback.includes('visual')
       "
-    >
-      oh no
-    </div>
+    ></div>
     <!-- audio feedback -->
   </div>
 </template>
@@ -59,10 +88,8 @@ export default {
       selected_answer: -1,
     };
   },
-  
-  created: function () {
 
-  },
+  created: function() {},
 
   methods: {
     feedback(correct) {
@@ -78,27 +105,27 @@ export default {
     },
     onChange(index) {
       this.selected_answer = index;
-        console.log(index);
-    }
+      console.log(index);
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
-@import '../scss/app.scss';
+@import "../scss/app.scss";
 
 .question-style {
   background-color: $color_lightPink;
-  height: 160px;
+  // height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 60px;
+  padding: 30px 30px;
   text-align: center;
   font-size: 24px;
   color: $color_darkBlue;
   filter: drop-shadow(0px 8px 15px rgb(0 0 0 / 0.05));
   border-radius: 50px;
-  width: 800px;
+  width: 900px;
 
   h2 {
     font-size: 24px;
@@ -125,7 +152,7 @@ export default {
       left: 630px;
     }
   }
-} 
+}
 
 ul {
   list-style-type: none;
@@ -143,14 +170,14 @@ input {
 }
 
 .answer-style {
-  padding: 1rem;
-  margin-top: 50px;
-  width: 660px;
+  padding: 0.5rem;
+  margin-top: 25px;
+  width: 750px;
   background-color: $color_lightPink;
   border-radius: 100px;
   color: $color_darkBlue;
   font-size: 16px;
-  height: 125px;
+  // height: 125px;
 
   .confetti-left {
     position: absolute;
@@ -179,24 +206,23 @@ input {
     border: 5px solid $color_green;
 
     &:checked {
-      content: url('../assets/tick.png'); 
+      content: url("../assets/tick.png");
       padding: 8px;
     }
   }
-
 }
 
 .wrong-answer {
   background-color: white;
   border: 10px solid $color_red;
-  color: #0D0844;
+  color: #0d0844;
   filter: drop-shadow(0px 8px 15px $color_red);
 
   input {
     border: 3px solid $color_red;
 
     &:checked {
-      content: url('../assets/x.png'); 
+      content: url("../assets/x.png");
       padding: 8px;
     }
   }
