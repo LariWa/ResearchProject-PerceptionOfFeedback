@@ -25,7 +25,9 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss" scoped>
+@import '../scss/app.scss';
+
 .header {
   position: fixed;
   top: 0;
@@ -44,7 +46,7 @@ export default {
 /* The progress bar (scroll indicator) */
 .progress-bar {
   height: 8px;
-  background: #04aa6d;
+  background: $color_darkPurple !important;
   width: 0%;
 }
 </style>

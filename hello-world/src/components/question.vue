@@ -32,6 +32,11 @@
         "
       >
         <label class="d-flex align-items-center">
+          <img
+            v-if="selected_answer === index && correctAnswer"
+            class="confetti-left"
+            src="../assets/confetti.gif"
+          />
           <div class="d-flex">
             <input
               type="radio"
@@ -43,20 +48,21 @@
           <div class="answer-text">
             {{ response.text }}
           </div>
+          <img
+            v-if="selected_answer === index && correctAnswer"
+            class="confetti-right"
+            src="../assets/confetti.gif"
+          />
         </label>
       </li>
     </ul>
     <!-- visual feedback -->
-    <div v-show="correctAnswer && question.feedback.includes('visual')">
-      yeay correct answer
-    </div>
+    <div v-show="correctAnswer && question.feedback.includes('visual')"></div>
     <div
       v-show="
         selected && !correctAnswer && question.feedback.includes('visual')
       "
-    >
-      oh no
-    </div>
+    ></div>
     <!-- audio feedback -->
   </div>
 </template>
@@ -109,6 +115,7 @@ export default {
     },
     onChange(index) {
       this.selected_answer = index;
+      console.log(index);
     },
   },
 };
@@ -118,17 +125,17 @@ export default {
 
 .question-style {
   background-color: $color_lightPink;
-  height: 160px;
+  // height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 60px;
+  padding: 30px 30px;
   text-align: center;
   font-size: 24px;
   color: $color_darkBlue;
   filter: drop-shadow(0px 8px 15px rgb(0 0 0 / 0.05));
   border-radius: 50px;
-  width: 800px;
+  width: 900px;
 
   h2 {
     font-size: 24px;
@@ -173,14 +180,26 @@ input {
 }
 
 .answer-style {
-  padding: 1rem;
-  margin-top: 50px;
-  width: 660px;
+  padding: 0.5rem;
+  margin-top: 25px;
+  width: 750px;
   background-color: $color_lightPink;
   border-radius: 100px;
   color: $color_darkBlue;
   font-size: 16px;
-  height: 125px;
+  // height: 125px;
+
+  .confetti-left {
+    position: absolute;
+    left: -200px;
+    height: 220px;
+  }
+
+  .confetti-right {
+    position: absolute;
+    right: -200px;
+    height: 220px;
+  }
 }
 
 .answer-text {
