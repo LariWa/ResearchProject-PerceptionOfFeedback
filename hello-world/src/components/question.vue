@@ -24,7 +24,7 @@
       </li>
     </ul>
     <!-- visual feedback -->
-    <div v-show="correctAnswer && question.feedback.includes('visual')">
+   <!--  <div v-show="correctAnswer && question.feedback.includes('visual')">
       yeay correct answer
     </div>
     <div
@@ -33,7 +33,7 @@
       "
     >
       oh no
-    </div>
+    </div> -->
     <!-- audio feedback -->
   </div>
 </template>
