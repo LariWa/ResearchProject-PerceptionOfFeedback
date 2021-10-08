@@ -86,12 +86,8 @@ export default {
     return {
       correctAnswer: false,
       selected: false,
-      correctAudio: new Audio(
-        "http://freesoundeffect.net/sites/default/files/feedback-correct-3.wav-sound-effect-55313111.mp3"
-      ),
-      incorrectAudio: new Audio(
-        "http://freesoundeffect.net/sites/default/files/feedback-incorrect-1.wav-sound-effect-41122437.mp3"
-      ),
+      correctAudio: new Audio("../assets/correct.mp3"),
+      incorrectAudio: new Audio("../assets/incorrect.mp3"),
       selected_answer: -1,
     };
   },
