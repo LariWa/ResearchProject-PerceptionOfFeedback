@@ -138,7 +138,7 @@ export default {
   color: $color_darkBlue;
   filter: drop-shadow(0px 8px 15px rgb(0 0 0 / 0.05));
   border-radius: 50px;
-  width: 900px;
+  width: 800px;
 
   h2 {
     font-size: 24px;
