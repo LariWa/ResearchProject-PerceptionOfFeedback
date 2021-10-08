@@ -86,8 +86,8 @@ export default {
     return {
       correctAnswer: false,
       selected: false,
-      correctAudio: new Audio("../assets/correct.mp3"),
-      incorrectAudio: new Audio("../assets/incorrect.mp3"),
+      correctAudio: new Audio(require("../assets/correct.mp3")),
+      incorrectAudio: new Audio(require("../assets/incorrect.mp3")),
       selected_answer: -1,
     };
   },
