@@ -416,23 +416,15 @@ ul {
   height: 500px;
 
   .figure-2-img {
-    position: absolute;
-    left: 40px;
     width: 800px;
-
-    @media (min-width: 1600px) {
-      width: 900px;
-    }
   }
 
   .figure-2-text {
-    position: absolute;
-    right: 0px;
-    width: 500px;
-    padding-right: 150px;
+    padding: 1rem !important;
+    margin-left: 10px;
 
-    @media (min-width: 1600px) {
-      width: 900px;
+    p {
+      font-size: 14px !important;
     }
   }
 }
