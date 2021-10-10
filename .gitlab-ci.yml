@@ -1,16 +1,42 @@
-pages:
+# ------------ Node Version ----------------------
+.node-image: &node-image
   image: node:latest
-  stage: deploy
-  script:
-    - cd hello-world
-    - npm install --progress=false
-    - npm run build
-    - rm -rf public
-    - mkdir ../public
-    - cp -r dist/* ../public
+
+# ------------  CI Stages ------------------------
+stages:
+  - build
+  - lint-frontend
+  - unit-test
+  - deploy
+
+# ------------ Build Front End -------------------
+build-frontend:
+  <<: *node-image
+  stage: build
   artifacts:
-    expire_in: 1 day
+    untracked: true
+  cache:
+      paths:
+      - node_modules/
+  script:
+    - yarn install
+    - yarn run build
+# ------------ End of Build Front End ------------
+
+
+
+# ------------ Deploy Front End ------------------
+pages:
+  <<: *node-image
+  stage: deploy
+  dependencies:
+      - build-frontend
+  script:
+    - mv public public-vue
+    - mv dist public
+  artifacts:
     paths:
       - public
   only:
-    - main
+    - combine
+# ------------ End of Deploy Front End -----------
